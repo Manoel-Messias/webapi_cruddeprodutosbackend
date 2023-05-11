@@ -1,20 +1,14 @@
 using Estudo.Application.CategoryService.CreateCategory;
+using Estudo.Application.CategoryService.DeleteCategory;
+using Estudo.Application.CategoryService.GetAllCategory;
 using Estudo.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Protocols;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Estudo.Apresentacion
 {
@@ -42,6 +36,9 @@ namespace Estudo.Apresentacion
             });
 
             services.AddScoped<ICreateCategoryService, CreateCategoryService>();
+            services.AddTransient<IDeleteCategoryService, DeleteCategoryService>();
+            services.AddScoped<IGetAllCategoryService, GetAllCategoryService>();
+            
 
             services.AddSwaggerGen(c =>
             {
